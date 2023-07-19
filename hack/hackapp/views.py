@@ -55,7 +55,7 @@ class LoginPageView(View):
                 username=username).values('password')
             if password == passwordToCheck[0]['password']:
 
-                return HttpResponse("logged in")
+                return redirect('home')
             else:
                 self.args['errors'] = "Invalid Credentials"
                 return render(request, self.template_name, self.args)
