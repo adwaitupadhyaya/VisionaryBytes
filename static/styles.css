@@ -4,6 +4,30 @@
   --ternary: #c40c4c;
 }
 
-* {
-  background-color: var(--secondary);
+body{
+  background-color:white;
+}
+
+.container{
+  border: 2px solid black;
+  padding: 20px;
+  width: 75%;
+  margin:  150px auto;
+  display: flex;
+  justify-content: center;
+}
+
+.left {
+  border: 2px solid black;
+ 
+}
+
+.left img{
+  width: 100%;
+}
+
+.right{
+  border: 2px solid black;
+  padding: 20px;
+
 }
