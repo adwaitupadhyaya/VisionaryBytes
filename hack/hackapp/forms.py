@@ -13,6 +13,7 @@ class SignupForm(forms.ModelForm):
             self.fields[field].widget.attrs.update({
                 'class': 'form-control'
             })
+            self.fields[field].help_text = None
 
     class Meta:
         model = CustomUser
