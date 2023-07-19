@@ -1,22 +1,33 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>hackathon</title>
-
+     <link rel="stylesheet" href="../static/styles.css"/>
+{% comment %} 
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
       crossorigin="anonymous"
-    />
+    /> {% endcomment %}
+    
   </head>
   <body>
-{% comment %} <div class = "container">
 
-</div> {% endcomment %}
-    <script
+    <div class="container">
+      <div class="left">
+        <img src="{% static '/image/bg.png' %}" alt="">
+      </div>
+      <div class="right">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, labore? Consequatur reiciendis vitae illum distinctio nulla, at, quis ipsum commodi necessitatibus, eligendi tempora voluptatum. Omnis rerum inventore, autem aliquid provident, odit incidunt maxime dolor officia dolores illo sunt saepe doloremque. Cupiditate ab nisi distinctio dolorum debitis aliquid illum sunt, vitae quae excepturi repellat tenetur iure aliquam in! Doloremque, illo facilis.
+      </div>
+    </div>
+
+
+    {% comment %} <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
       crossorigin="anonymous"
@@ -30,7 +41,7 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
       integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
       crossorigin="anonymous"
-    ></script>
+    ></script> {% endcomment %}
 
 
 
