@@ -123,7 +123,7 @@ class ServiceProviderView(LoginRequiredMixin, View):
             m = form.save()
             print(m.type_of_service)
 
-            if m.type_of_service == 'electrician':
+            if m.type_of_service == 'Electrician':
                 vacancy_path = '..'
             if m.type_of_service == 'Plumbing':
                 vacancy_path = '../static/vacancies/for plumber.pdf'
