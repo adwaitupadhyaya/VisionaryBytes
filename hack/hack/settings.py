@@ -54,8 +54,8 @@ MIDDLEWARE = [
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
+    # Add any additional authentication backends if needed.
 ]
-
 ROOT_URLCONF = 'hack.urls'
 
 TEMPLATES = [
@@ -109,7 +109,6 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-AUTH_USER_MODEL = 'hackapp.CustomUser'
 
 LANGUAGE_CODE = 'en-us'
 

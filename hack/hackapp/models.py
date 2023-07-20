@@ -1,13 +1,8 @@
 from django.db import models
-
+from django.contrib.auth import get_user_model
 from django.contrib.auth.models import AbstractUser
 
 
-class CustomUser(AbstractUser):
-    user_type_choices = (
-        ("client", "client"),
-        ("service provider", "service provider")
-    )
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 
-    user_type = models.CharField(
-        max_length=20, choices=user_type_choices, null=True, blank=True)
+User = get_user_model()

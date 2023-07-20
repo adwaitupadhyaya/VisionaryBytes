@@ -2,10 +2,14 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate
 
-from hackapp.models import CustomUser
-
+from .models import User
 
 class SignupForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput(), required=True)
+
+    class Meta:
+        model = User
+        fields = ('first_name','last_name', 'username', 'email', 'password')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -13,12 +17,6 @@ class SignupForm(forms.ModelForm):
             self.fields[field].widget.attrs.update({
                 'class': 'form-control'
             })
-            self.fields[field].help_text = None
-
-    class Meta:
-        model = CustomUser
-        fields = ['first_name', 'last_name', 'email',
-                  'username', 'password', 'user_type']
 
 
 class LoginForm(forms.Form):

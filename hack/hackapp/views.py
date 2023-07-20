@@ -1,11 +1,11 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.views import View
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.views import LogoutView
 
 from hackapp.forms import SignupForm, LoginForm
-from hackapp.models import CustomUser
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
 
@@ -23,9 +23,10 @@ class LandingPageView(View):
 
     def post(self, request):
         form = SignupForm(request.POST)
-
+        m = form.save(commit = False)
         if form.is_valid():
-            form.save()
+            m.set_password(form.cleaned_data['password'])
+            m.save()
             return redirect('login')
         else:
             print(form.errors)
@@ -37,7 +38,6 @@ class LoginPageView(View):
         self.template_name = "login.html"
         self.args = {
             'form': LoginForm()
-
         }
         return super().dispatch(request, *args, **kwargs)
 
@@ -46,23 +46,28 @@ class LoginPageView(View):
 
     def post(self, request):
         form = LoginForm(request.POST)
-
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
-            user = CustomUser.objects.filter(username=username)
-            passwordToCheck = CustomUser.objects.filter(
-                username=username).values('password')
-            print(passwordToCheck)
-            if password == passwordToCheck[0]['password']:
-
+            print(form.cleaned_data)
+            user = authenticate(request, username=username, password=password)
+            print(user) 
+            if user is not None:
+                login(request, user)    
                 return redirect('home')
             else:
                 self.args['errors'] = "Invalid Credentials"
                 return render(request, self.template_name, self.args)
-            
+        else:
+            self.args['error'] = 'Sorry, Unable to process your request'
+            return render(request, self.template_name, self.args)
+        
+class LogoutView(LoginRequiredMixin, View):
+    def get(self,request):
+        logout(request)
+        return redirect('login')
 
-class HomePageView(View):
+class HomePageView(LoginRequiredMixin, View):
     def dispatch(self, request, *args, **kwargs):
         self.template_name = 'home.html'
         self.args = {
