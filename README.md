@@ -9,8 +9,8 @@ incoming service requests. They have the opportunity to thoroughly inspect the i
 solutions. Upon completion of the task, service providers can mark the job as finished. As a crucial aspect of the platform, customers can rate the service
 providers. This information helps other users in making informed choices and assists service providers in enhancing their service quality.
 
-Tech Stack: Django
+Tech Stack: Django.
 
-Features: Recommendation based on ratings.
+Features: Recommendation based and validated service providers.
 
 Originality: Gamification, Ratings
