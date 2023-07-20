@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+
+<style>
+
+    .container-services{
+        background-image : url('../static/image/homebg1.jpg');
+        background-size: 1700px 1100px;
+        background-repeat: no-repeat;
+        margin-top: 95px !important;
+       
+        padding: 20px;
+        
+    }
+    .card-body {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        padding: -10.75rem;
+    }
+
+    .card{
+        width: 100px;
+        margin: 0 auto;
+        float: none;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+        background-color: #f3f7e1;
+    }
+    .card:hover {
+        transform: translate(15px,-15px);
+        background-color: orange;
+        transition-property: transform background-color;
+        transition:ease 300ms;
+        
+
+    }
+    
+
+</style>
+
+{% endblock css %}
+
+
+
+
+{% block contents %}
+
+<div class="container-services">
+
+<div class="row mx-auto">
+    <div class="col-4 mt-4 ">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src=" {% static '/image/viewrequest.jpg' %}" alt="Card image cap" height ="200px" width = "200px">
+            <div class="card-body">
+            <h5 class="card-title">VIEW REQUEST</h5>
+            
+            <a href="#" class="btn btn-outline-dark">VIEW NOW</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 mt-4 ">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src=" {% static '/image/startjob.png' %}" alt="Card image cap" height ="200px" width = "200px">
+            <div class="card-body">
+              <h5 class="card-title">START JOB</h5>
+              
+              <a href="#" class="btn btn-outline-dark">START NOW</a>
+            </div>
+          </div>
+    </div>
+    <div class="col-4 mt-4 ">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src=" {% static '/image/finishjob.jpg' %}" alt="Card image cap" height ="200px" width = "200px">
+            <div class="card-body">
+              <h5 class="card-title">FINISH JOB</h5>
+              
+              <a href="#" class="btn btn-outline-dark">FINISH NOW</a>
+            </div>
+          </div>
+    </div>
+</div>
+
+
+    
+    
+</div>
+
+</div>
+{% endblock contents %}
+

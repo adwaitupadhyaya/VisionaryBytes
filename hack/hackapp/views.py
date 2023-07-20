@@ -166,3 +166,14 @@ class ServicesView(LoginRequiredMixin, View):
      
         return render(request, self.template_name, self.args)
     
+class DashboardView(LoginRequiredMixin, View):
+    def dispatch(self, request, *args, **kwargs):
+        self.template_name = "dashboard.html"
+        self.args ={
+
+        }
+        return super().dispatch(request, *args, **kwargs)
+    
+    def get(self, request):
+        return render(request, self.template_name, self.args)
+    

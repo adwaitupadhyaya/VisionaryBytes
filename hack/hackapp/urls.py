@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from hackapp.views import LandingPageView, LoginPageView, HomePageView, LogoutView, ClientView, ServiceProviderView, ServicesView
+from hackapp.views import LandingPageView, LoginPageView, HomePageView, LogoutView, ClientView, ServiceProviderView, ServicesView, DashboardView
 
 urlpatterns = [
     path('', LandingPageView.as_view(), name="landing"),
@@ -9,5 +9,6 @@ urlpatterns = [
     path('home/', HomePageView.as_view(), name = 'home'),
     path('client/', ClientView.as_view(), name = 'client'),
     path('service-provider/', ServiceProviderView.as_view(), name = 'service-provider'),
-    path('services', ServicesView.as_view(), name = 'services')
+    path('services', ServicesView.as_view(), name = 'services'),
+    path('dashboard', DashboardView.as_view(), name = 'dashboard')
 ]
