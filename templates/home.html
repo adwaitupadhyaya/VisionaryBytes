@@ -1,7 +1,111 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% load static %} {% block css %}
 
+<style>
+  .whole {
+    background-color: #eob7a5;
+    height: 510px;
+  }
+  .container-home {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    padding: 40px;
+  }
 
-{% block contents %}
-{{id}}
+  .left {
+    padding: 5px;
+    margin-right: 5px;
+    border-radius: 20px;
+  }
 
-{% endblock contents %}
+  .right {
+    padding: 5px;
+    border-radius: 20px;
+  }
+
+  [type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  /* IMAGE STYLES */
+  [type="radio"] + img {
+    cursor: pointer;
+  }
+
+  /* CHECKED STYLES */
+  [type="radio"]:checked + img {
+    outline: 2px solid #1ad4f0;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+  }
+
+  h1 {
+    margin-top: 90px;
+    text-align: center;
+    font-variant: small-caps;
+  }
+
+  h3 {
+    text-align: center;
+  }
+
+  form {
+    display: flex;
+    flex-direction: row;
+  }
+
+  img {
+    margin: 0px 70px;
+  }
+
+  .buttons {
+    position: absolute;
+    top: 525px;
+    left: 609px;
+  }
+</style>
+
+{% endblock css %} {% block contents %}
+
+<div class="whole">
+  <h1>Embark on your home-solutions journey with us!!</h1>
+  <div class="container-home">
+    <form action="" method="POST">
+      <label>
+        <h3>Service Provider</h3>
+        <input type="radio" name="test" value="small" checked />
+        <img
+          src=" {% static '/image/serviceprovider.jpg' %}"
+          height="300px"
+          width="300px"
+          alt="Option 1"
+        />
+      </label>
+
+      <label>
+        <h3>Client</h3>
+        <input type="radio" name="test" value="big" />
+        <img
+          src=" {% static '/image/client.jpg' %}"
+          alt="Option 2"
+          height="300px"
+          width="300px"
+        />
+      </label>
+      <div class="buttons">
+        <input
+          type="submit"
+          value="Dive In !!"
+          class="btn-lg btn-outline-dark"
+        />
+      </div>
+    </form>
+  </div>
+</div>
+{%endblock contents %}
