@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+
+<style>
+
+    .container-services{
+        background-image : url('../static/image/homebg1.jpg');
+        background-size: 1700px 1100px;
+        background-repeat: no-repeat;
+        margin-top: 95px !important;
+       
+        padding: 20px;
+        
+    }
+    .card-body {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        padding: -10.75rem;
+    }
+
+    .card{
+        width: 100px;
+        margin: 0 auto;
+        float: none;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+        background-color: #f3f7e1;
+    }
+
+    
+
+</style>
+
+{% endblock css %}
+
+
+
+
+{% block contents %}
+
+<div class="container-services">
+
+<div class="row mx-auto">
+    <div class="col-4 mt-4 ">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src=" {% static '/image/electrician.png' %}" alt="Card image cap" height ="200px" width = "200px">
+            <div class="card-body">
+            <h5 class="card-title">Electricity</h5>
+            
+            <a href="#" class="btn btn-outline-dark">Book Now</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 mt-4 ">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src=" {% static '/image/computer networking.png' %}" alt="Card image cap" height ="200px" width = "200px">
+            <div class="card-body">
+              <h5 class="card-title">IT</h5>
+              
+              <a href="#" class="btn btn-outline-dark">Book Now</a>
+            </div>
+          </div>
+    </div>
+    <div class="col-4 mt-4 ">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src=" {% static '/image/painter.png' %}" alt="Card image cap" height ="200px" width = "200px">
+            <div class="card-body">
+              <h5 class="card-title">Painting</h5>
+              
+              <a href="#" class="btn btn-outline-dark">Book Now</a>
+            </div>
+          </div>
+    </div>
+</div>
+
+<div class="row mx-auto mt-4">
+    <div class="col-4 mt-4  ">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src=" {% static '/image/gardener.png' %}" alt="Card image cap" height ="200px" width = "200px">
+            <div class="card-body">
+              <h5 class="card-title">Gardening</h5>
+              
+              <a href="#" class="btn btn-outline-dark">Book Now</a>
+            </div>
+          </div>
+    </div>
+    <div class="col-4 mt-4 ">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src=" {% static '/image/plumber.png' %}" alt="Card image cap" height ="200px" width = "200px">
+            <div class="card-body">
+              <h5 class="card-title">Plumbing</h5>
+              
+              <a href="#" class="btn btn-outline-dark">Book Now</a>
+            </div>
+          </div>
+    </div>
+    <div class="col-4 mt-4 ">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src=" {% static '/image/carpenter.png' %}" alt="Card image cap" height ="200px" width = "200px">
+            <div class="card-body">
+              <h5 class="card-title">Carpentry</h5>
+             
+              <a href="#" class="btn btn-outline-dark">Book Now</a>
+            </div>
+          </div>
+    </div>
+</div>
+
+</div>
+{% endblock contents %}
+

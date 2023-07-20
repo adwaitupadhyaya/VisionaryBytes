@@ -4,6 +4,9 @@ from django.views import View
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.views import LogoutView
 
+from .forms import ServiceProviderForm
+from .models import UserType
+
 from hackapp.forms import SignupForm, LoginForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
@@ -49,12 +52,10 @@ class LoginPageView(View):
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
-            print(form.cleaned_data)
             user = authenticate(request, username=username, password=password)
-            print(user) 
             if user is not None:
                 login(request, user)    
-                return redirect('home')
+                return redirect('client')
             else:
                 self.args['errors'] = "Invalid Credentials"
                 return render(request, self.template_name, self.args)
@@ -76,5 +77,52 @@ class HomePageView(LoginRequiredMixin, View):
         return super().dispatch(request, *args, **kwargs)
     
     def get(self, request):
+        return render(request, self.template_name, self.args)
+    
+    def post(Self,request):
+        data = request.POST.dict()
+        user_type = data['test']
+        user = request.user
+        user_type_model = UserType(user = user, user_type = user_type)
+        user_type_model.save()
+        print(user_type_model)
+
+        if user_type_model.user_type == "client":
+            return redirect('client')
+        else:
+            return redirect('service-provider')
+
+class ClientView(LoginRequiredMixin, View):
+    def dispatch(self, request, *args, **kwargs):
+        self.template_name = "client.html"
+        self.args = {
+            
+        }
+        
+        return super().dispatch(request, *args, **kwargs)
+    
+    def get(self,request):
+        return render(request, self.template_name, self.args)
+    
+class ServiceProviderView(LoginRequiredMixin, View):
+    def dispatch(self, request, *args, **kwargs):
+        self.template_name = "service-details.html"
+        self.args = {
+            'form':ServiceProviderForm(),
+            }
+        return super().dispatch(request, *args, **kwargs)
+    
+    def get(self, request):
+        return render(request, self.template_name, self.args)
+    
+
+class ServicesView(LoginRequiredMixin, View):
+    def dispatch(self, request, *args, **kwargs):
+        self.template_name = 'services.html'
+        
+        return super().dispatch(request, *args, **kwargs)
+    
+    def get(self, request):
+     
         return render(request, self.template_name, self.args)
     

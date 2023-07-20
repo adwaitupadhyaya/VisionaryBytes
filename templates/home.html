@@ -77,9 +77,10 @@
   <h1>Embark on your home-solutions journey with us!!</h1>
   <div class="container-home">
     <form action="" method="POST">
+      {% csrf_token %}
       <label>
         <h3>Service Provider</h3>
-        <input type="radio" name="test" value="small" checked />
+        <input type="radio" name="test" value="serviceprovider" checked />
         <img
           src=" {% static '/image/serviceprovider.jpg' %}"
           height="300px"
@@ -90,7 +91,7 @@
 
       <label>
         <h3>Client</h3>
-        <input type="radio" name="test" value="big" />
+        <input type="radio" name="test" value="client" />
         <img
           src=" {% static '/image/client.jpg' %}"
           alt="Option 2"

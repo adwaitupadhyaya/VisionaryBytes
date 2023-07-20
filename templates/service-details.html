@@ -1,0 +1,50 @@
+{% extends 'base.html' %} {% block css %}
+
+<style>
+  .container-server{
+    margin-top:95px !important;
+    background-image: url("../static/image/homebg1.jpg");
+    background-repeat: no-repeat;
+    background-size: 1730px 800px;
+  }
+
+  .form{
+    border-radius: 30px;
+    padding: 40px;
+    width: 50%;
+    background-color:#f3f7e188;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+  }
+  .form h2{
+    font-style: small-caps;
+    text-align: center;
+  }
+  
+  .buttons{
+    text-align: center;
+  }
+</style>
+
+{% endblock css %} {% block contents %}
+
+<div class="container-server">
+  
+  <div class="container form mt-5">
+    <h2>Register With Us</h2>
+
+    <form action="" method = "POST">
+      
+      {% csrf_token %}
+      
+      {{form.as_p}}
+
+      <div class="buttons">
+
+        <input type="submit" value="Submit" class = "btn btn-dark">
+      </div>
+    </form>
+  </div>
+  </div>
+
+
+{% endblock contents %}
