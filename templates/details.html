@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block css %}
+
+<style>
+    .container-details{
+        margin: 100px auto;
+        border: 2px solid black;
+        width: 70%;
+        
+    }
+</style>
+
+
+{% endblock css %}
+
+
+{% block contents %}
+
+<div class="container-details">
+
+   <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">S.N.</th>
+      <th scope="col">Name of technician</th>
+      <th scope="col">Contact</th>
+    </tr>
+  </thead>
+  <tbody>
+     {% for d in data %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{d.full_name}}</td>
+        <td> <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModalCenter" class = "btn btn-outline-dark">{{d.phone_number}}</button>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Contact Technician</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are You Sure you want to contact this technician?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+        <form action="" method="post">
+            {% csrf_token %}
+            <label for="technician">Technician</label>
+            <input type="text" name="technician">
+            <input type="submit" value="Confirm" class = "btn btn-outline-dark">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+        
+        </td>
+      
+    </tr>
+     {% endfor %}
+  </tbody>
+</table>
+</div>
+
+{% endblock contents %}

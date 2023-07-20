@@ -18,12 +18,9 @@ def calculate_matching_score(vacancy_text, cv_text):
 
 def comparer(cv_path, vacancy_pdf_path):
     # Path of the pdf to be compared
-
-    cv_pdf_path = "C:\\Users\\Manish Acharya\\OneDrive\\Desktop\\CV Matcher\\Ramcv.pdf"
-
     # Extract text from the PDFs
     vacancy_text = extract_text_from_pdf(vacancy_pdf_path)
-    cv_text = extract_text_from_pdf(cv_pdf_path)
+    cv_text = extract_text_from_pdf(cv_path)
 
     # Preprocess the text (convert to lowercase for better matching)
     vacancy_text = vacancy_text.lower()

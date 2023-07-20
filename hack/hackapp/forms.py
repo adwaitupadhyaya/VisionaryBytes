@@ -43,7 +43,7 @@ class ServiceProviderForm(forms.ModelForm):
             
     class Meta:
         model = ServiceProviderModel
-        fields = '__all__'
+        fields = ('full_name', 'phone_number', 'address','email', 'citizenship_image', 'cv', 'type_of_service')
 
 
 

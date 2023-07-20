@@ -6,7 +6,7 @@ from django.contrib.auth.views import LogoutView
 from django.contrib import messages
 
 from .forms import ServiceProviderForm
-from .models import ServiceProviderModel, UserType
+from .models import ClientRequestsModel, ServiceProviderModel, UserType
 
 from hackapp.forms import SignupForm, LoginForm
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -147,7 +147,7 @@ class ServiceProviderView(LoginRequiredMixin, View):
             else:
                 self.args['success'] = "Congratulations, You have been registered in our system"
                 messages.success(request, "Congratulations, You have been registered in our system")
-                return redirect('service-provider-dashboard')
+                return redirect('dashboard')
         else:
             self.args['errors'] = form.errors
             return render(request, self.template_name, self.args)
@@ -176,4 +176,45 @@ class DashboardView(LoginRequiredMixin, View):
     
     def get(self, request):
         return render(request, self.template_name, self.args)
+    
+
+class ServiceProviderListView(LoginRequiredMixin, View):
+    def dispatch(self, request, *args, **kwargs):
+        self.template_name = "details.html"
+
+        self.args = {
+
+        }
+        return super().dispatch(request, *args, **kwargs)
+    
+    def get(self, request, *args, **kwargs):
+        
+        id = kwargs.get('pk')
+        print(id)
+
+        if (id == 1):
+            data = ServiceProviderModel.objects.filter(type_of_service = "Electrician").order_by('-threshold')
+        if (id == 2):
+            data  = ServiceProviderModel.objects.filter(type_of_service = "IT").order_by('-threshold')
+        if (id == 3):
+            data = ServiceProviderModel.objects.filter(type_of_service = "Plumbing").order_by('-threshold')
+        if (id == 4):
+            data  = ServiceProviderModel.objects.filter(type_of_service = "Gardening").order_by('-threshold')
+        if (id == 5):
+            data = ServiceProviderModel.objects.filter(type_of_service = "Painting").order_by('-threshold')
+        if (id == 6):
+            data  = ServiceProviderModel.objects.filter(type_of_service = "Carpentry").order_by('-threshold')
+
+        self.args['data'] = data
+
+        return render(request, self.template_name, self.args )
+    
+    def post(self, request, *args, **kwargs):
+        user = request.user
+        technician = request.POST.dict()
+        print(technician)
+        client_request = ClientRequestsModel(user = user, technician = technician['technician'])
+        client_request.save()
+        messages.success(request, "Your request has been placed")
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     
