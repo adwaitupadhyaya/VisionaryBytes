@@ -1,13 +1,55 @@
 {% extends 'base.html' %} {% block css %}
 
 <style>
-  p {
-    margin-top: 100px;
-  }
+ 
+.container-client{
+  background-image : url('../static/image/homebg1.jpg');
+  background-repeat: no-repeat;
+  margin-top: 95px !important;
+  
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 500px;
+  background-size: 1730px 560px;
+
+}
+
+.left-client{
+  padding: 25px;
+  border-radius: 30px;
+}
+
+.left-client h1{
+  font-size: 70px;
+}
+
+.left-client h3{
+  font-style: italic;
+}
+
+.right-client{
+  padding: 25px;
+  text-align: center;
+  
+  border-radius: 30px;
+}
 </style>
 
 {% endblock css %} {% block contents %}
-<p>
-  this is client page vdfa;igvuuydgflvardjlfhgljdfkahvgfuic;geic;uvesvjkqueagh
-</p>
+
+
+<div class="container-client">
+<div class="left-client">
+
+  <h1>समाधान... </h1>
+  <h3>Connecting you to reliable home solutions.</h3>
+
+</div>
+<div class="right-client">
+
+  <h1>What services do you need?</h1>
+  <button class = "btn-lg btn-outline-dark" onclick="location.href='{% url 'services' %}'" >Book Now</button>
+</div>
+</div>
 {% endblock contents %}

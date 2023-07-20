@@ -1,14 +1,93 @@
 {% extends 'base.html' %} {% block css %}
 
 <style>
-  p {
-    margin-top: 100px;
+  .container-server{
+    margin-top:95px !important;
+    background-image: url("../static/image/homebg1.jpg");
+    background-repeat: no-repeat;
+    background-size: 1730px 900px;
   }
+
+  .form{
+    border-radius: 30px;
+    padding: 40px;
+    width: 50%;
+    background-color:#f3f7e188;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+  }
+  .form h2{
+    font-style: small-caps;
+    text-align: center;
+  }
+  
+  .buttons{
+    text-align: center;
+  }
+
+  .error {
+  text-align: center;
+  color: red;
+  font-style: italic;
+}
 </style>
 
 {% endblock css %} {% block contents %}
-<p>
-  this is service provider page
-  vdfa;igvuuydgflvardjlfhgljdfkahvgfuic;geic;uvesvjkqueagh
-</p>
+
+<div class="container-server">
+  <div class="container form mt-5">
+    <h2>Register With Us</h2>
+
+    <form enctype="multipart/form-data" action="" method = "POST">
+      
+      {% csrf_token %}
+      <div class="error">{{errors}}</div>
+      {{form.as_p}}
+
+      <div class="buttons">
+
+        <input type="submit" value="Submit" class = "btn btn-dark">
+      </div>
+    </form>
+  </div>
+    
+  </div>
+
+
+
 {% endblock contents %}
+
+{% block js %}
+
+<script>
+
+
+    {% if messages  %}
+    
+    {% for message in messages %}
+    {% if message.level == 20 %}
+    var swal_type = 'info'; 
+    {% elif message.level == 25 %}
+    var swal_type = 'success';          
+    {% elif message.level == 30 %}
+    var swal_type = 'warning';      
+    {% elif message.level == 40 %}
+    var swal_type = 'error';    
+    {% endif %}
+    
+    Swal.fire({
+        position: 'top-end',
+        type: swal_type,
+        title: '{{ message }}',
+        showConfirmButton: false,
+        timer: 2000,
+        height: '100px'
+    })
+    {% endfor %}
+{% endif %}
+</script>
+
+{% endblock js %}
+
+
+
+
