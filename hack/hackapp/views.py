@@ -169,7 +169,9 @@ class ServicesView(LoginRequiredMixin, View):
 class DashboardView(LoginRequiredMixin, View):
     def dispatch(self, request, *args, **kwargs):
         self.template_name = "dashboard.html"
+        print(request.user)
         self.args ={
+            "datas": ClientRequestsModel.objects.filter(technician = request.user)
 
         }
         return super().dispatch(request, *args, **kwargs)

@@ -30,14 +30,7 @@
         box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
         background-color: #f3f7e1;
     }
-    .card:hover {
-        transform: translate(15px,-15px);
-        background-color: orange;
-        transition-property: transform background-color;
-        transition:ease 300ms;
-        
-
-    }
+    
     
 
 </style>
@@ -58,7 +51,32 @@
             <div class="card-body">
             <h5 class="card-title">VIEW REQUEST</h5>
             
-            <a href="#" class="btn btn-outline-dark">VIEW NOW</a>
+           <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+View Now
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Client Requests</h1>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        {% for data in datas %}
+        {{data}}
+        {% endfor %}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
         </div>
       </div>
     </div>
